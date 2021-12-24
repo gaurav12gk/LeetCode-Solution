@@ -1,33 +1,36 @@
 class Solution {
 public:
-    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+    vector<int> spiralOrder(vector<vector<int>>& A) {
         
-          int top=0,left=0,right=matrix[0].size()-1,down=matrix.size()-1;
+          int t=0,l=0,r=A[0].size()-1,b=A.size()-1;
     int dir=0;
-    vector<int>ans;
-    while(left<=right&&top<=down){
-           if(dir==0){
-               for(int i=left;i<=right;i++)
-               ans.push_back(matrix[top][i]);
-               top+=1;
-           }
-           else if(dir==1){
-               for(int i=top;i<=down;i++)
-               ans.push_back(matrix[i][right]);
-               right-=1;
-           }
-           else if(dir==2){
-               for(int i=right;i>=left;i--)
-               ans.push_back(matrix[down][i]);
-               down-=1;
-           }
-           else if(dir==3){
-               for(int i=down;i>=top;i--)
-                   ans.push_back(matrix[i][left]);
-                   left+=1;
-           }
-           dir=(dir+1)%4;
-       }
-    return ans;
+    vector<int>bb;
+    while(t<=b and r>=l)
+    {
+     
+        if(dir==0){
+            for(int k=l;k<=r;k++)bb.push_back(A[t][k]);
+            t++;dir++;
+        }
+       else if(dir==1){
+            for(int k=t;k<=b;k++)bb.push_back(A[k][r]);
+            r--;dir++;
+        }
+         else if(dir==2){
+         // if(l==r and A[0].size()%2==0)break;
+            for(int k=r;k>=l;k--)bb.push_back(A[b][k]);
+          b--;dir++;
+        }
+       else if(dir==3)
+        { 
+          for(int k=b;k>=t;k--)bb.push_back(A[k][l]);
+          l++;
+            dir++;
+        }
+      dir = dir%4;
+        
+    }
+   
+    return bb;
     }
 };
