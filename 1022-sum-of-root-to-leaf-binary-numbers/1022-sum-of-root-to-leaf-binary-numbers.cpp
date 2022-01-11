@@ -17,7 +17,7 @@
             if(root->left==nullptr and root->right==nullptr)
             { 
                  s+=to_string(root->val);
-                cout<<s<<endl;
+               // cout<<s<<endl;
                 reverse(s.begin(),s.end());
                
                 for(int i = 0 ;i<s.size();i++)
