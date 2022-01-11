@@ -17,13 +17,13 @@
             if(root->left==nullptr and root->right==nullptr)
             { 
                  s+=to_string(root->val);
-               // cout<<s<<endl;
-                reverse(s.begin(),s.end());
-               
+              
+               // reverse(s.begin(),s.end());
+             
                 for(int i = 0 ;i<s.size();i++)
                 {
                     int k = s[i]-'0';
-                    ans+=k*(1<<i);
+                    ans+=k*(1<<(s.size()-i-1));
                 }
                
                  return ;
