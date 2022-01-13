@@ -2,11 +2,10 @@ class Solution {
 public:
     static bool cmp(vector<int>&a,vector<int>&b)
     {
-   if(a[0] == b[0])return a[1] > b[1]  ;
        return a[0] < b[0];
     }
     int findMinArrowShots(vector<vector<int>>& points) {
-        //similar to merge Intervals
+      
         sort(points.begin(),points.end(),cmp);
             int cntIntervals = 1 ; 
         
