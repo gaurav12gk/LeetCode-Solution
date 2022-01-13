@@ -1,12 +1,12 @@
+
 class Solution {
 public:
-    static bool cmp(vector<int>&a,vector<int>&b)
-    {
-       return a[0] < b[0];
-    }
+
     int findMinArrowShots(vector<vector<int>>& points) {
       
-        sort(points.begin(),points.end(),cmp);
+ sort(points.begin(), points.end(), [] (auto &p1, auto&p2) {
+            return p1[1] < p2[1];
+        });
             int cntIntervals = 1 ; 
         
        int mine = points[0][0];
