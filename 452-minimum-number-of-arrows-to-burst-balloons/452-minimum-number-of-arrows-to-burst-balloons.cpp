@@ -10,18 +10,22 @@ public:
         sort(points.begin(),points.end(),cmp);
             int cntIntervals = 1 ; 
         
-        pair<int,int> interval = {points[0][0],points[0][1]};
+       int mine = points[0][0];
+        int maxe =points[0][1];
         
     
         for(int i = 1;i<points.size();i++)
         {
-            if(points[i][0] > interval.second)
+            if(points[i][0] > maxe)
             {
                 cntIntervals++;
-                interval = {points[i][0] , points[i][1]};
-                
+         mine = points[i][0];
+         maxe =points[i][1];
+        
+            
             }
- interval  ={max(interval.first,points[i][0]),min(interval.second,points[i][1])};
+             mine =max(mine,points[i][0]);
+         maxe =min(maxe,points[i][1]);
         }
         return cntIntervals;
     }
