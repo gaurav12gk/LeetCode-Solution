@@ -39,7 +39,9 @@ class Solution
             }
             j++;
         }
-         res.push_back(-1);
+        int k = -1;
+        res.push_back(k);  return  res;
+      
     }
 };
 
