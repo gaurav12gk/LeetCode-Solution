@@ -1,33 +1,23 @@
 class Solution {
 public:
     vector<long long>dp;
-    long long minop(long long n, long long x, long long val)
+    long long minop(long long n, long long x)
     {
-        if(val > n)return INT_MAX;
-        if(val == n)return 0 ; 
-        if(dp[val]!=-1)return dp[val];
+        if(n<1)return 0;
+        if(n == 1)return 0 ; 
+      
         
-        if(x==0){
-            return dp[val] = 1+minop(n,x,val+1);
+        if(x<=0){
+            return n-1;
         }
-        else return dp[val] = min(1+minop(n,x,val+1) , 1+minop(n,x-1,val*2));
+        if(n&1)
+            return 1+minop(n-1,x);
+        else return 1+minop(n/2,x-1);
+      
     }
     int minMoves(int target, int maxDoubles) {
-        if(maxDoubles ==0) return target -1;
-        int ans = 0 ;
-            while(target!=1 and maxDoubles)
-            {
-                if(target & 1 ){
-                    target--;
-                    ans++;
-                }
-                else {
-                    maxDoubles--;
-                    target/=2;
-                    ans++;
-                }
-            }
-        ans+=target -1;
+   //    dp.resize(target*2+1,-1);
+        int ans = minop(target ,  maxDoubles);
         return ans;
     }
 };
