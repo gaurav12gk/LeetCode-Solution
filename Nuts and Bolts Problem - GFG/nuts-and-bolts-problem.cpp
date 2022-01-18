@@ -11,20 +11,15 @@ public:
 
 	void matchPairs(char nuts[], char bolts[], int n) {
 	    // code here
-	    string s = " ! # $ % & * @ ^ ~ ";
-	    map<char,int> m; 
-	        for(int i = 0 ;i<s.size();i++)
-	        m[s[i]]= i+1;
-	        
-	        sort(nuts,nuts+n,[&](char a, char b){
-	            return m[a] < m[b];
-	        });
-	        
-	            sort(bolts,bolts+n,[&](char a, char b){
-	            return m[a] < m[b];
-	        });
-	        
-	        
+	 vector<int> isPresent(256);
+	 for(int i= 0 ;i<n;i++)
+	 isPresent[nuts[i]]++;
+        
+	for(int i = 0,j = 0 ;i<256;i++)
+	{
+	  if(isPresent[i]!=0) { nuts[j]= char(i);
+	    bolts[j++] =char(i);}
+	}
 	}
 
 };
