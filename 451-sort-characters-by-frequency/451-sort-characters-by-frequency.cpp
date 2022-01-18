@@ -6,8 +6,8 @@ public:
            return a.second > b.second;
        }
     string frequencySort(string s) {
-            vector<pair<char,int>> v(145);
-            for(int i = 0 ;i<145;i++)
+            vector<pair<char,int>> v(123);
+            for(int i = 0 ;i<123;i++)
             v[i].second = 0 ; 
 
             for(auto c: s)
@@ -22,7 +22,7 @@ public:
 
             sort(v.begin(),v.end(),cmp);
             string ss; 
-            for(int i = 0 ;i<140;i++)
+            for(int i = 0 ;i<123;i++)
             {
                 if(v[i].second ==0)break;
                 while(v[i].second--)
