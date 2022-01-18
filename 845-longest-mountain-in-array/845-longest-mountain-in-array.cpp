@@ -3,6 +3,7 @@ class Solution
 public:
     int longestMountain(vector<int> &v)
     {
+        ios_base::sync_with_stdio(false) ; cin.tie(0) ; cout.tie(0);
         int ans = 0;
         int i = 0, j = 1;
         while (j < v.size())
