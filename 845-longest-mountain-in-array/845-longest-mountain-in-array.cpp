@@ -1,34 +1,32 @@
-class Solution {
+class Solution
+{
 public:
-    int longestMountain(vector<int>&v) {
-        int ans = 0 ; 
-          int i = 0 , j = 1 ; 
-        while(j<v.size())
+    int longestMountain(vector<int> &v)
+    {
+        int ans = 0;
+        int i = 0, j = 1;
+        while (j < v.size())
         {
-            if(v[j] > v[j-1]){
-                while( j< v.size() and v[j] > v[j-1] )
-                { 
-                    // inc = true; 
-                   
-               
-                        j++;
-                }
-             //   debug(j)
-                while( j< v.size() and v[j] < v[j-1] )
+            if (v[j] > v[j - 1])
+            {
+                while (j < v.size() and v[j] > v[j - 1])
                 {
-                    // dec = true;
-                   // debug(v[j])
-                    
-                    ans = max(ans,j-i+1);
+
                     j++;
                 }
-              //  debug(ans)
+
+                while (j < v.size() and v[j] < v[j - 1])
+                {
+
+                    ans = max(ans, j - i + 1);
+                    j++;
+                }
+
                 j--;
             }
             i = j;
-           j++;
+            j++;
         }
         return ans;
-          
     }
 };
