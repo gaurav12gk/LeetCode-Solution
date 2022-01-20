@@ -42,7 +42,7 @@ void Union(int a,int b)
         
     for(auto &c : m)
     {  
-        sort(c.second.rbegin(),c.second.rend());
+      c.second =   countSort(c.second);
 
     }
     for(int i = 0 ;i<s.size();i++)
@@ -60,4 +60,25 @@ void Union(int a,int b)
         return s;
      
     }
+    private : 
+  
+string countSort(string a)
+{ 
+    vector<int> cc(26);
+    for (auto c : a)
+        cc[c - 'a']++;
+    string res = "";
+  
+        for(char i = 'z';i>='a';i--)
+        {
+            while(cc[i-'a']!=0)
+            {
+                res+=i;
+                cc[i-'a']--;
+            }
+        }
+          //  debug(res);
+    return res;
+}
+
 };
