@@ -1,6 +1,7 @@
 class Solution {
 public:
   vector<int> parent;
+    vector<int> rank;
     int Find(int a)
     {
        if(parent[a]==-1)return a;
@@ -10,11 +11,15 @@ public:
     {
         a = Find(a);
         b = Find(b); 
-        parent[b] = a; 
+       if(rank[a] < rank[b])
+           swap(a,b);
+        rank[a]+=rank[b];
+        parent[b] = a;
         
     }
     int findCircleNum(vector<vector<int>>& isConnected) {
        parent.resize(isConnected.size()+1,-1);
+        rank.resize(isConnected.size()+1,1);
         parent[0] = 1;
         for(int i = 0 ;i<isConnected.size();i++)
         {
