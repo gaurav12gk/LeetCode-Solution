@@ -5,7 +5,7 @@ public:
     int Find(int a)
     {
        if(parent[a]==-1)return a;
-        return parent[a] = Find(parent[a]);
+        return Find(parent[a]);
     }
     void Union(int a, int b)
     {
