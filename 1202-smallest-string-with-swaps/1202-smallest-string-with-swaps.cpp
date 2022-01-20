@@ -1,6 +1,7 @@
 class Solution {
 public:
     vector<int> parent;
+    vector<int> rank;
     int Find(int a)
     {
         if(parent[a]==-1)return a;
@@ -11,11 +12,13 @@ void Union(int a,int b)
 {
     a = Find(a);
     b = Find(b);
+    if(rank[a] < rank[b])swap(a,b);
+    rank[a]+=rank[b];
     parent[b] = a; 
 }
     string smallestStringWithSwaps(string s, vector<vector<int>>& pairs) {
         parent.resize(s.size()+1,-1);
-        
+        rank.resize(s.size()+1,1);
         for(int i = 0 ;i<pairs.size();i++)
         {
            
