@@ -1,28 +1,24 @@
 class Solution {
 public:
-    vector<vector<int>> paths;
-    void dfs(int node , vector<int> path , int destination , vector<vector<int>> v)
-    {
-        if(node == destination){
-            paths.push_back(path);
-            return;
+    // setting a few class variables, so that we do not have to pass them down all the time in the recursive dfs calls
+    int target;
+    vector<vector<int>> res;
+    vector<int> tmp;
+    void dfs(vector<vector<int>>& graph, int currNode = 0) {
+	    // updating tmp
+        tmp.push_back(currNode);
+		// and either updating res with it if target is met
+        if (currNode == target) res.push_back(tmp);
+		// or callling dfs again recursively
+        else for (int node: graph[currNode]) {
+            dfs(graph, node);
         }
-        for(auto child : v[node])
-        {
-            path.push_back(child);
-            dfs(child,path,destination,v);
-              path.pop_back();
-        }
-      
-        
-        
-        
+        // backtracking with tmp
+		tmp.pop_back();
     }
     vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
-        int destination = graph.size()-1;
-        vector<int> path;
-        path.push_back(0);
-        dfs(0,path,destination,graph);
-        return paths;
+        target = graph.size() - 1;
+        dfs(graph);
+        return res;
     }
 };
