@@ -28,18 +28,18 @@ public:
             int sz = q.size();
 
                    auto cur = q.front();
-                   cur->next = nullptr;
+                   
                    if(cur->left)q.push(cur->left);
                    if(cur->right)q.push(cur->right);
             q.pop();
             for(int i = 0 ;i<sz-1;i++)
             {
-              auto temp = q.front();
-                cur->next = temp;
-                if(temp->left)q.push(temp->left);
-                if(temp->right)q.push(temp->right);
-                cur = temp;
-                cur->next = nullptr;
+              
+                cur->next = q.front();
+                if(q.front()->left)q.push(q.front()->left);
+                if(q.front()->right)q.push(q.front()->right);
+                cur = q.front();
+            
                 q.pop();
             }
         }
