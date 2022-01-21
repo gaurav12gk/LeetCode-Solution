@@ -36,9 +36,11 @@ public:
             {
               
                 cur->next = q.front();
-                if(q.front()->left)q.push(q.front()->left);
-                if(q.front()->right)q.push(q.front()->right);
-                cur = q.front();
+                cur = cur->next;
+                
+                if(cur->left)q.push(cur->left);
+                if(cur->right)q.push(cur->right);
+               
             
                 q.pop();
             }
