@@ -4,9 +4,9 @@ public:
         int upper = 0 ;
         //check the first letter is capital or not 
         for(int i = 0 ;i<word.size();i++)
-            if(isupper(word[i]))upper++;
+             if(word[i] >= 'A' && word[i] <= 'Z')upper++;
         
-        if(upper == word.size() or (upper ==1 and isupper(word[0])) or upper==0)return true;
+        if(upper == word.size() or (upper ==1 and (word[0] >= 'A' && word[0] <= 'Z')) or upper==0)return true;
         return false;
         
     
