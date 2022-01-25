@@ -18,9 +18,7 @@ public:
         
     }
     int goodNodes(TreeNode* root) {
-        if(!root)return 0; 
-        if(!root->left and !root->right)return 1;
-        
+     
         getGoodNode(root,root->val);
         return cnt;
     }
