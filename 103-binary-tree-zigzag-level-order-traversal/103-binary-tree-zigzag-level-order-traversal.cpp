@@ -16,6 +16,7 @@ public:
         if(!root)return res;
         queue<TreeNode*> q;
         q.push(root);
+        bool f=  false;
         while(q.size())
         {
             int sz = q.size();
@@ -29,13 +30,14 @@ public:
                 if(cur->right)q.push(cur->right);
                 
             }
-            res.push_back(temp);
+            if(f){
+                f^=1; 
+                reverse(temp.begin(),temp.end());
+                res.push_back(temp);
+            }
+         else  { res.push_back(temp);f^=1;}
         }
-        if(res.size()==1)return res;
-    for(int i = 1;i<res.size();i+=2)
-    {
-        reverse(res[i].begin(),res[i].end());
-    }
+   
         return res;
     }
 };
