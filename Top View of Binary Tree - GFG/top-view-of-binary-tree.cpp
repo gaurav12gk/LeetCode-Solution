@@ -99,22 +99,39 @@ struct Node
     Node* right;
 };
 */
-class Solution {
-    void dfs(Node *root, map<int,pair<int,int>> &track, int cur, int lvl) {
-        if(!root) return;
-        if(track.find(cur) == track.end() || track[cur].second > lvl)
-            track[cur] = {root->data, lvl};
-        dfs(root->left, track, cur-1, lvl+1);
-        dfs(root->right, track, cur+1, lvl+1);
-    }
+class Solution
+{
     public:
-    vector<int> topView(Node *root) {
-        map<int,pair<int,int>> track;
-        vector<int> ans;
-        dfs(root, track, 0, 0);
-        for(auto a: track)
-            ans.push_back(a.second.first);
-        return ans;
+    //Function to return a list of nodes visible from the top view 
+    //from left to right in Binary Tree.
+    vector<int> topView(Node *root)
+    {
+        //Your code here
+        map<int,int> m; 
+        queue<pair<int,Node*>> q; 
+        q.push({0,root});
+        
+    vector<int> ans;
+    while(!q.empty())
+    {
+        auto  cur = q.front().second;
+        // q.pop();
+        int idx = q.front().first;
+        q.pop();
+        if(m.find(idx)==m.end())
+        m[idx] = cur->data;
+        
+        if(cur->left)
+            q.push({idx-1,cur->left});
+            if(cur->right)q.push({idx+1,cur->right});
+        
+    }
+    for(auto c: m)
+    {
+        ans.push_back(c.second);
+    }
+    return ans;
+    
     }
 
 };
