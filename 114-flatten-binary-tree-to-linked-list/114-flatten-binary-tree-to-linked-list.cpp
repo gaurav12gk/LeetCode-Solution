@@ -14,14 +14,23 @@ public:
     TreeNode *pre = nullptr;
 
     void flatten(TreeNode* root) {
-        
-         if(root == nullptr)return; 
-    
-      flatten(root->right);
-        flatten(root->left);
-        
-        root->right = pre;
-        root->left = nullptr;
-        pre = root;
+        auto cur  = root;
+        while(cur)
+        {
+            if(!(cur->left)) cur = cur->right;
+        else   
+            {
+                auto pre = cur->left;
+                while(pre->right)
+                    pre = pre->right;
+                
+                pre->right = cur->right;
+                cur->right = cur->left;
+                cur->left = nullptr;
+                cur = cur->right;
+            }
+          //  cur = cur->right;
+        }
+       
     }
 };
