@@ -1,16 +1,20 @@
 class Solution {
 public:
     void moveZeroes(vector<int>& v) {
-     map<int,int> m; 
-        for(int i = 0 ;i<v.size();i++)
-            if(v[i]!=0)m[i]= v[i];
-        
-        int idx = 0 ; 
-        for(auto c: m)
+   int i = 0 , j = 0; 
+        while(i<v.size() and v[i]!=0)i++;
+        // 1 3 3 0 1
+        j = i+1;
+        while(j<v.size())
         {
-            v[idx++] = c.second;
+            if(v[j]!=0)
+            {
+             v[i++] = v[j];
+                v[j] = 0;
+            }
+            
+            j++;
         }
-        while(idx<v.size())
-            v[idx++] = 0;
+        
     }
 };
