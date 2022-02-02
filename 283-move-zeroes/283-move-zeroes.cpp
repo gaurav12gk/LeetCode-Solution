@@ -9,8 +9,7 @@ public:
         {
             if(v[j]!=0)
             {
-             v[i++] = v[j];
-                v[j] = 0;
+            swap(v[i++],v[j]);
             }
             
             j++;
