@@ -14,9 +14,10 @@ public:
      
         for(int i = 0 ;i<phone[cur].size();i++)
         {
-            string op = s;
-            op.push_back(phone[cur][i]);
-            lc(digits,n,idx+1,op);
+           s.push_back(phone[cur][i]);
+           
+            lc(digits,n,idx+1,s);
+          s.pop_back();
        
         }
         
