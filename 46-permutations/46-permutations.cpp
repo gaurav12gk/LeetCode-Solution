@@ -1,11 +1,20 @@
 class Solution {
 public:
+    vector<vector<int>>res;
+    void perm(vector<int> v, int idx)
+    {
+        if(idx==v.size()){
+            res.push_back(v);
+            return;
+        }
+        for(int i = idx;i<v.size();i++)
+        {
+            swap(v[i],v[idx]);
+            perm(v,idx+1);
+        }
+    }
     vector<vector<int>> permute(vector<int>& nums) {
-        vector<vector<int>> res; 
-        sort(nums.begin(),nums.end());
-        do {
-           res.push_back(nums); 
-        }while(next_permutation(nums.begin(),nums.end()));
-    return res;}
-    
+        perm(nums,0);
+        return res;
+    }
 };
