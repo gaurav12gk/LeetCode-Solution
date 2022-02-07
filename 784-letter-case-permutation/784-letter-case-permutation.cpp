@@ -13,7 +13,10 @@ public:
      helper(s,i+1);
        if(!isdigit(s[i]))
         {
-            s[i]^= 1<<5;
+              if (isupper(s[i]))
+                s[i] = tolower(s[i]);
+            else if (islower(s[i]))
+                s[i] = toupper(s[i]);
 
             helper(s, i + 1);
         }
