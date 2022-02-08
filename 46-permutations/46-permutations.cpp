@@ -1,11 +1,12 @@
 class Solution {
 public:
-    vector<vector<int>>res;
+    vector<vector<int>> res;
     void perm(vector<int> v, int idx)
     {
-        if(idx==v.size()){
+        if(idx==v.size())
+        {
             res.push_back(v);
-            return;
+            
         }
         for(int i = idx;i<v.size();i++)
         {
