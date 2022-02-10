@@ -1,16 +1,25 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
-        int sum = 0 ;
-        int cnt = 0 ; 
-        map<int,int> m; 
-                 m[0]++; 
-        for(auto c: nums)
+        unordered_map<int, int> umap;
+        int res = 0;
+        int sum = 0;
+        
+        for(int i = 0; i < nums.size(); i++)
         {
-            sum+=c; 
-            cnt+=m[sum-k]; 
-            m[sum]++;
+            sum += nums[i];
+            
+            if(sum == k)
+            {
+                res++;
+            }
+            
+            if(umap.find(sum - k) != umap.end()) // exists
+            {
+                res += umap[sum - k];
+            }
+            umap[sum]++;
         }
-        return cnt;
+        return res;
     }
 };
