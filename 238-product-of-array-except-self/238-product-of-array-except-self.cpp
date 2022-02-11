@@ -9,13 +9,16 @@ public:
         for(int i = 1;i<n;i++)
             pre[i] = pre[i-1]*nums[i];
         
-        for(int i  = n-2;i>=0;i--)
-            suff[i] = suff[i+1]*nums[i];
-        
-        nums[0] = suff[1];
+       long long right = 1; 
+        right = nums[n-1];
         nums[n-1] = pre[n-2];
-        for(int i = 1;i<n-1;i++)
-            nums[i] = pre[i-1]*suff[i+1];
+        for(int i = n-2;i>0;i--)
+        {
+            int temp = nums[i];
+            nums[i] = pre[i-1]*right;
+            right*=temp;
+        }
+        nums[0] = right;
         return nums;
     }
 };
