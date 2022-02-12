@@ -15,7 +15,7 @@ public:
     void dfs(TreeNode *root, int target , vector<int> track)
     {
         // if i was on the leaf node
-        if(!root)return;
+      
         if(!root->left and !root->right)
         {
             if(target-root->val == 0)
@@ -24,13 +24,14 @@ public:
         }
     
         track.push_back(root->val);
-        dfs(root->left,target-track.back(),track);
+       if(root->left) dfs(root->left,target-track.back(),track);
        // track.pop_back();
-        dfs(root->right,target-track.back(),track);
+     if(root->right)   dfs(root->right,target-track.back(),track);
       //  track.pop_back();
         
     }
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        if(!root)return paths;
        vector<int> path;
         dfs(root,targetSum,path);
         return paths;
