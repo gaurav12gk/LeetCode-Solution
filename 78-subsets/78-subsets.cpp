@@ -8,9 +8,11 @@ public:
             res.push_back(path);
             return;
         }
-        helper(v,idx+1,path);
+       
         path.push_back(v[idx]);
         helper(v,idx+1,path);
+        path.pop_back();
+         helper(v,idx+1,path);
     }
     vector<vector<int>> subsets(vector<int>& nums) {
      vector<int> path;
