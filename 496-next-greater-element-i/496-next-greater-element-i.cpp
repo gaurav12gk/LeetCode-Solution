@@ -11,8 +11,7 @@ public:
             if(s.size()==0)
             {
                 m[nums2[i]]=-1;
-                s.push(nums2[i]);
-                continue;
+             
             }
             while(s.size() and s.top()<nums2[i])
             {
@@ -21,13 +20,13 @@ public:
             if(s.size()==0)
             {
                 m[nums2[i]] = -1;
-                s.push(nums2[i]);
-                continue;
+             
             }
             else {
                 m[nums2[i]] = s.top();
-                s.push(nums2[i]);
+                
             }
+            s.push(nums2[i]);
         }
         vector<int> res; 
         for(auto c: nums1)
