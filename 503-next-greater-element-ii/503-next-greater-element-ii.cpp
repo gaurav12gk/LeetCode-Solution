@@ -14,7 +14,7 @@ public:
         }
         for(int i = n-1;i>=0;i--)
         {
-            if(!s.size())res[--k] = -1;
+          
             while(s.size() and s.top()<=nums[i])
                 s.pop();
             if(!s.size())res[--k] = -1;
