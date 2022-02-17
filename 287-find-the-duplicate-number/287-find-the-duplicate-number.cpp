@@ -1,11 +1,25 @@
 class Solution {
 public:
-    int findDuplicate(vector<int>& v) {
-           int ans = 0 ; 
-        sort(v.begin(),v.end());
-     for(int i = 1;i<v.size();i++)
-         if(v[i]==v[i-1])return v[i];
-        
-        return 0;
+    int check(int mid , vector<int> v)
+    {
+        int cnt = 0 ; 
+        for(auto c: v)
+        {
+            if(mid >=c)cnt++;
+        }
+        return cnt;
+    }
+    int findDuplicate(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        int low = 0 , high = nums.size();
+        int ans = -1 ; 
+         while(high >=low)
+         {
+             int mid = (low+high)>>1;
+             if(check(mid,nums)>mid)
+                 ans = mid , high = mid-1;
+             else low = mid+1;
+         }
+    return ans;
     }
 };
