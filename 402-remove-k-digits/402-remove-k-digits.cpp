@@ -17,10 +17,10 @@ public:
         }
         while(k and s.size())
             s.pop_back(),k--;
-        while(s.size())
-            res.push_back(s.back()),s.pop_back();
+       for(int i = 0 ;i<s.size();i++)
+           res+=s[i];
         
-        reverse(res.begin(),res.end());
+       
        
       if(res.size()==0)res="0";
         return res;
