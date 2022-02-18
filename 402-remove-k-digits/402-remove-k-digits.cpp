@@ -12,22 +12,17 @@ public:
             
             s.push_back(nums[i]);
             
-            // if(s.size()==1 and s.top()=='0')
-            //     s.pop();
+            if(s.size()==1 and s.back()=='0')
+                s.pop_back();
         }
-        while(k)
+        while(k and s.size())
             s.pop_back(),k--;
         while(s.size())
             res.push_back(s.back()),s.pop_back();
         
         reverse(res.begin(),res.end());
        
-      //  cout<<res;
-        int i = 0 ; 
-        while(res[i]=='0')
-            i++;
-        res = res.substr(i,res.size()+1);
-        if(res.size()==0)res="0";
+      if(res.size()==0)res="0";
         return res;
     }
 };
