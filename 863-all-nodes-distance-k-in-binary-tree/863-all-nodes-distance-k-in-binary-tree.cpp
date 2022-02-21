@@ -9,7 +9,7 @@
  */
 class Solution {
 public:
-    map<TreeNode*,TreeNode*>m;
+    unordered_map<TreeNode*,TreeNode*>m;
     vector<int> ans; 
     vector<int> distanceK(TreeNode* root, TreeNode* target, int k) {
         if(!root)return ans; 
@@ -42,7 +42,6 @@ public:
             node.pop();
             visited[root] = true;
             if(dist==k){
-                //cout<<dist<<endl;
                 ans.push_back(root->val);
                 continue;
             }
