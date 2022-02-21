@@ -30,21 +30,22 @@ public:
                 q.push(cur->right);
             }
         }
-        
+        int time = 0;
         queue<pair<int,TreeNode*>> node;
         node.push({0,target});
         map<TreeNode*,bool> visited;
         while(node.size())
         {
-            auto cur = node.front(); 
+            if(time++==k)break;
+            int sz = node.size();
+            for(int i = 0;i<sz;i++)
+            {
+          auto cur = node.front(); 
             int dist = cur.first; 
             auto root = cur.second;
             node.pop();
             visited[root] = true;
-            if(dist==k){
-                ans.push_back(root->val);
-                continue;
-            }
+           
             if(root->left and !visited[root->left])
             {
                 node.push({dist+1,root->left});
@@ -54,7 +55,12 @@ public:
             
             if(m[root] and !visited[m[root]])
                 node.push({dist+1,m[root]});
+                
+            }
+         
         }
+        while(node.size())
+            ans.push_back(node.front().second->val),node.pop();
         return ans;
     }
 };
