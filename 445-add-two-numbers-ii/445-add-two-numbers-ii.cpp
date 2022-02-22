@@ -28,23 +28,35 @@ public:
     
  
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-      l1 =   reverse(l1);
-        l2 = reverse(l2);
+     stack<ListNode*> s,s2;
+        while(l1)
+        {
+            if(l1)
+            s.push(l1);
+            l1 = l1->next;
+        }
+          while(l2)
+        {
+            if(l2)
+            s2.push(l2);
+            l2 = l2->next;
+        }
         int sum = 0 ; 
    
         ListNode* ans = nullptr, *res = nullptr; 
         
-        while(l1 or l2 or sum)
+        while(s.size() or s2.size() or sum)
         {
-            if(l1)
+            if(s.size())
             {
-                sum+=l1->val; 
-                l1 = l1->next;
+                sum+=s.top()->val; 
+                s.pop();
+              
             }
-            if(l2)
+           if(s2.size())
             {
-                sum+=l2->val; 
-                l2 = l2->next;
+                sum+=s2.top()->val; 
+               s2.pop();
             }
             ListNode *temp = new ListNode(sum%10);
             if(!res)
@@ -58,7 +70,7 @@ public:
             }
             sum/=10;
         }
-        ans = reverse(ans);
+       ans = reverse(ans);
         return ans;
         
     }
