@@ -48,7 +48,7 @@ public:
     ListNode* rotateRight(ListNode* head, int k) {
         if(!head or !k)return head; 
         int sz = getSize(head);
-        if(sz==1)return head;
+        
         k%=sz;
         if(k==0)return head;
         head = reverse(head);
