@@ -3,7 +3,7 @@ public:
     vector<vector<bool>> visit;
     void dfs(int x , int y , vector<vector<char>> &grid)
     {
-        cout<<"Hello";
+        
         if(x<0 or y<0 or x>grid.size()-1 or y > grid[0].size()-1 or grid[x][y] == '0')return ;
         grid[x][y] ='0';
         dfs(x-1,y,grid);
